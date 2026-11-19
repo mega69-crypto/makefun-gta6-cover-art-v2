@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neon Coast Cover Studio</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-star">&#9733;</span>
+    <h1>Neon Coast <span>Cover Studio</span></h1>
+  </div>
+  <p class="tagline">Turn your photo into GTA-style cover art. Offline, on your machine.</p>
+  <div class="top-actions">
+    <button id="undoBtn" type="button" title="Undo">&#8617; Undo</button>
+    <button id="redoBtn" type="button" title="Redo">&#8618; Redo</button>
+  </div>
+</header>
+
+<main class="layout">
+  <aside class="controls" aria-label="Editor controls">
+    <section class="card">
+      <h2>1. Photos</h2>
+      <p class="hint">Two sample photos are loaded. Add your own, or use the samples.</p>
+      <label class="upload-btn" for="uploadInput">+ Add your photos</label>
+      <input id="uploadInput" type="file" accept="image/*" multiple hidden>
+      <p class="hint">Your photos never leave this machine. Nothing is uploaded.</p>
+    </section>
+
+    <section class="card">
+      <h2>2. Layout</h2>
+      <div id="layoutPicker" class="picker"></div>
+    </section>
+
+    <section class="card">
+      <h2>3. Colour grade</h2>
+      <div id="gradePicker" class="picker"></div>
+    </section>
+
+    <section class="card">
+      <h2>4. Caption</h2>
+      <label class="field-label" for="titleInput">Title</label>
+      <input id="titleInput" type="text" value="SUNSET HEIST" maxlength="28" autocomplete="off">
+      <label class="field-label" for="subtitleInput">Subtitle</label>
+      <input id="subtitleInput" type="text" value="Vice City nights" maxlength="40" autocomplete="off">
+    </section>
+
+    <section class="card">
+      <h2>5. Selected panel</h2>
+      <p class="hint" id="panelLabel">Panel 1 of 4</p>
+      <label class="field-label" for="photoSelect">Photo in this panel</label>
+      <select id="photoSelect"></select>
+      <label class="field-label" for="zoomRange">Zoom <span id="zoomValue">1.0x</span></label>
+      <input id="zoomRange" type="range" min="1" max="3" step="0.05" value="1">
+      <p class="hint" id="panelHint">Click a panel on the cover to select it, then drag inside it to move the photo.</p>
+    </section>
+
+    <section class="card">
+      <h2>6. Effects</h2>
+      <label class="check"><input id="grainToggle" type="checkbox" checked> Film grain</label>
+      <label class="check"><input id="vignetteToggle" type="checkbox" checked> Vignette</label>
+      <label class="check"><input id="badgeToggle" type="checkbox" checked> Neon Coast badge</label>
+      <label class="field-label" for="heatRange">Heat meter <span id="heatValue">4 / 5</span></label>
+      <input id="heatRange" type="range" min="0" max="5" step="1" value="4">
+    </section>
+
+    <section class="card">
+      <h2>Presets</h2>
+      <div id="presetPicker" class="picker"></div>
+    </section>
+
+    <section class="card export-card">
+      <h2>Export PNG</h2>
+      <label class="field-label" for="sizeSelect">Preview size</label>
+      <select id="sizeSelect"></select>
+      <button id="exportBigBtn" type="button" class="export-big">Export cover PNG</button>
+      <div id="exportButtons" class="export-row"></div>
+      <button id="exportAllBtn" type="button" class="export-all">Export all sizes</button>
+      <p class="hint">Exports the exact size you pick: 1080x1080, 1080x1350, 1920x1080 or 1080x1920.</p>
+    </section>
+  </aside>
+
+  <section class="stage" aria-label="Cover preview">
+    <canvas id="preview" width="1080" height="1080"></canvas>
+    <p class="stage-hint">Live preview. Click a panel to select it, drag to move its photo.</p>
+  </section>
+</main>
+
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
